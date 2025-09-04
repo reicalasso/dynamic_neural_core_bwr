@@ -12,8 +12,8 @@ const ResearchPage: React.FC = () => {
   return (
     <div className="bg-gray-900 text-white min-h-screen">
       <Head>
-        <title>BWR-NSM Advanced Research Dashboard</title>
-        <meta name="description" content="Neural State Machine vs Transformer Research Platform" />
+        <title>BWR-DNC Advanced Research Dashboard</title>
+        <meta name="description" content="Dynamic Neural Core vs Transformer Research Platform" />
       </Head>
       
       {/* Back to home link */}

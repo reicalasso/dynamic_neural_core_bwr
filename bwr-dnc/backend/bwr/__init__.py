@@ -1,11 +1,11 @@
 """
-BWR-NSM: A Neural State Machine Implementation
+2BWR-DNC: A Dynamic Neural Core Implementation
 
-This package implements a Neural State Machine (NSM) with hierarchical memory management
+This package implements a Dynamic Neural Core (DNC) with hierarchical memory management
 and adaptive compression for efficient long-range context modeling.
 
 Components:
-- NSM: The main neural state machine model
+- DNC: The main dynamic neural core model
 - StateBank: Hierarchical memory management system
 - Trainer: Training utilities and optimization strategies
 - Dataset: Data loading and preprocessing utilities
@@ -25,7 +25,7 @@ __author__ = "BWR Team"
 __email__ = "bwr@example.com"
 
 # Core components
-from .model import NSM
+from .model import DNC
 from .statebank import StateBank, AdvancedStateBank
 from .trainer import AdvancedTrainer
 from .dataset import Dataset
@@ -36,15 +36,15 @@ from .persistence import StatePersistenceManager
 from .async_manager import AsyncMemoryManager, AsyncTrainingManager
 from .performance_monitor import RTXPerformanceMonitor, ModelPerformanceAnalyzer
 from .eviction_policies import AdvancedEvictionManager, SmartMemoryManager, ContextAwareEviction
-from .unlimited_context import UnlimitedContextNSM, DynamicCompressionManager
+from .unlimited_context import UnlimitedContextDNC, DynamicCompressionManager
 from .advanced_training import AdvancedTrainingManager, CurriculumLearningManager
 
 # Integration
-from .integration import AdvancedNSM, AdvancedNSMTrainer, create_advanced_nsm, create_trainer
+from .integration import AdvancedDNC, AdvancedDNCTrainer, create_advanced_dnc, create_trainer
 
 __all__ = [
     # Core components
-    "NSM",
+    "DNC",
     "StateBank", 
     "AdvancedStateBank",
     "AdvancedTrainer",
@@ -59,14 +59,14 @@ __all__ = [
     "AdvancedEvictionManager",
     "SmartMemoryManager",
     "ContextAwareEviction",
-    "UnlimitedContextNSM",
+    "UnlimitedContextDNC",
     "DynamicCompressionManager",
     "AdvancedTrainingManager",
     "CurriculumLearningManager",
     
     # Integration
-    "AdvancedNSM",
-    "AdvancedNSMTrainer",
-    "create_advanced_nsm",
+    "AdvancedDNC",
+    "AdvancedDNCTrainer",
+    "create_advanced_dnc",
     "create_trainer"
 ]

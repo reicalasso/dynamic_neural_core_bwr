@@ -91,8 +91,8 @@ class MultiHeadAttention(nn.Module):
         attn_output = attn_output.transpose(1, 2).contiguous().view(B, T, C)
         return self.out_proj(attn_output)
 
-class NSMBlock(nn.Module):
-    """Enhanced NSM block with better normalization and GLU activation."""
+class DNCBlock(nn.Module):
+    """Enhanced DNC block with better normalization and GLU activation."""
     def __init__(self, d_model, n_heads, ff_mult=4, dropout=0.1):
         super().__init__()
         self.self_attn = MultiHeadAttention(d_model, n_heads, dropout)
@@ -122,8 +122,8 @@ class NSMBlock(nn.Module):
         x = self.norm2(x)
         return x
 
-class NSM(nn.Module):
-    """Enhanced Neural State Machine with advanced features."""
+class DNC(nn.Module):
+    """Enhanced Dynamic Neural Core with advanced features."""
     def __init__(self, vocab, d_model=512, n_layers=6, n_heads=8, slots=2048, 
                  max_seq_len=8192, dropout=0.1):
         super().__init__()
@@ -136,7 +136,7 @@ class NSM(nn.Module):
         
         # Transformer blocks
         self.blocks = nn.ModuleList([
-            NSMBlock(d_model, n_heads, dropout=dropout) 
+            DNCBlock(d_model, n_heads, dropout=dropout) 
             for _ in range(n_layers)
         ])
         

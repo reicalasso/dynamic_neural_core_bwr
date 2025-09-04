@@ -1,8 +1,8 @@
-# BWR-NSM Project Plan and Management Document
+# BWR-DNC Project Plan and Management Document
 
 ## Project Summary
 
-This document provides a comprehensive roadmap and management plan for the development of the BWR-NSM (BlackWall Reuko Neural State Machine) system. The system is an advanced neural state machine implementation offering significant advantages over traditional Transformer architectures.
+This document provides a comprehensive roadmap and management plan for the development of the BWR-DNC (BlackWall Reuko Dynamic Neural Core) system. The system is an advanced dynamic neural core implementation offering significant advantages over traditional Transformer architectures.
 
 ## 1. Technical Feasibility and Applicability
 

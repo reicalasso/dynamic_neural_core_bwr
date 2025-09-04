@@ -267,16 +267,16 @@ class DynamicCompressionManager:
         return None
 
 
-class UnlimitedContextNSM(nn.Module):
-    """NSM with unlimited context capability through dynamic compression."""
+class UnlimitedContextDNC(nn.Module):
+    """DNC with unlimited context capability through dynamic compression."""
     
-    def __init__(self, base_nsm: nn.Module, base_context_length: int = 512):
+    def __init__(self, base_dnc: nn.Module, base_context_length: int = 512):
         super().__init__()
-        self.base_nsm = base_nsm
+        self.base_dnc = base_dnc
         self.compression_manager = DynamicCompressionManager(base_context_length)
         
         # Initialize compression networks
-        d_model = base_nsm.d_model
+        d_model = base_dnc.d_model
         self.compression_manager.initialize_compression_networks(d_model)
         
         # Context assembly layer
@@ -294,21 +294,21 @@ class UnlimitedContextNSM(nn.Module):
         B, T = input_ids.shape
         
         # Get embeddings
-        x = self.base_nsm.tok_embed(input_ids)
+        x = self.base_dnc.tok_embed(input_ids)
         
         # Apply position embeddings
-        if T > self.base_nsm.rope.cos_cached.shape[0] and extended_context:
+        if T > self.base_dnc.rope.cos_cached.shape[0] and extended_context:
             # Use extended position embeddings for very long sequences
             pos_ids = torch.arange(T, device=input_ids.device)
             pos_embed = self.extended_pos_embed(pos_ids % self.extended_pos_embed.num_embeddings)
             x = x + pos_embed.unsqueeze(0)
         else:
             # Use standard RoPE
-            x = self.base_nsm.rope(x, T)
+            x = self.base_dnc.rope(x, T)
         
         # Process through transformer blocks
         attention_weights = None
-        for block in self.base_nsm.blocks:
+        for block in self.base_dnc.blocks:
             x = block(x)
             # Could extract attention weights here for importance computation
         
@@ -324,20 +324,20 @@ class UnlimitedContextNSM(nn.Module):
                 x, _ = self.context_assembler(x, relevant_context, relevant_context)
         
         # State bank interaction
-        q = self.base_nsm.state_proj(x)
-        r, attention_maps, route_weights = self.base_nsm.state.read(q)
-        r = self.base_nsm.read_proj(r)
+        q = self.base_dnc.state_proj(x)
+        r, attention_maps, route_weights = self.base_dnc.state.read(q)
+        r = self.base_dnc.read_proj(r)
         
         # Combine with state read
         h = x + r
         
         # Output
-        h = self.base_nsm.norm_out(h)
-        logits = self.base_nsm.lm_head(h)
+        h = self.base_dnc.norm_out(h)
+        logits = self.base_dnc.lm_head(h)
         
         # Training-time state updates
         if self.training:
-            self.base_nsm.state.write(h.detach(), attention_maps)
+            self.base_dnc.state.write(h.detach(), attention_maps)
         
         result = {
             "attention_maps": attention_maps,
@@ -374,7 +374,7 @@ class UnlimitedContextNSM(nn.Module):
 
 
 def create_unlimited_context_model(base_model: nn.Module, 
-                                 context_length: int = 512) -> UnlimitedContextNSM:
-    """Create an unlimited context version of a base NSM model."""
-    unlimited_model = UnlimitedContextNSM(base_model, context_length)
+                                 context_length: int = 512) -> UnlimitedContextDNC:
+    """Create an unlimited context version of a base DNC model."""
+    unlimited_model = UnlimitedContextDNC(base_model, context_length)
     return unlimited_model

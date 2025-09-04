@@ -13,7 +13,7 @@ import logging
 
 # Add backend to path to import model
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'backend'))
-from bwr.model import NSM
+from bwr.model import DNC
 from bwr.research_metrics import ResearchMetricsAggregator, GenerationCounters
 from bwr.advanced_research_metrics import AdvancedResearchMetrics
 from bwr.advanced_analysis import AdvancedAnalysis
@@ -35,7 +35,7 @@ class MockTokenizer:
             ids = ids.squeeze()
         return ''.join([chr(int(id) % 128 + 32) for id in ids[:50]])
 
-app = FastAPI(title="BWR-NSM Advanced API", version="2.0.0")
+app = FastAPI(title="BWR-DNC Advanced API", version="2.0.0")
 
 # CORS middleware for frontend
 app.add_middleware(
@@ -48,7 +48,7 @@ app.add_middleware(
 
 # Global state
 state_registry: Dict[str, Dict] = {}
-model: Optional[NSM] = None
+model: Optional[DNC] = None
 tokenizer: Optional[MockTokenizer] = None
 websocket_connections: List[WebSocket] = []
 
@@ -145,10 +145,10 @@ manager = ConnectionManager()
 async def load_model():
     global model, tokenizer, metrics_aggregator, advanced_metrics, advanced_analysis, research_broadcast_task
     try:
-        logger.info("Loading BWR-NSM model...")
+        logger.info("Loading BWR-DNC model...")
 
         vocab_size = 8000
-        model = NSM(
+        model = DNC(
             vocab=vocab_size,
             d_model=512,
             n_layers=6,
@@ -180,7 +180,7 @@ async def load_model():
 
 @app.get("/")
 async def root():
-    return {"message": "BWR-NSM Advanced API", "version": "2.0.0", "status": "running"}
+    return {"message": "BWR-DNC Advanced API", "version": "2.0.0", "status": "running"}
 
 @app.get("/health")
 async def health_check():

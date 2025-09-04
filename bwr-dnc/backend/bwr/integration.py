@@ -1,8 +1,8 @@
 """
-BWR-NSM Integration Module
+BWR-DNC Integration Module
 ==========================
 
-This module integrates all the advanced features of BWR-NSM:
+This module integrates all the advanced features of BWR-DNC:
 - State Persistence
 - Asynchronous Processing  
 - Performance Monitoring
@@ -11,13 +11,13 @@ This module integrates all the advanced features of BWR-NSM:
 - Advanced Training Features
 
 Usage:
-    from bwr.integration import create_advanced_nsm, AdvancedNSMTrainer
+    from bwr.integration import create_advanced_dnc, AdvancedDNCTrainer
     
     # Create model with all features
-    model = create_advanced_nsm(config)
+    model = create_advanced_dnc(config)
     
     # Create trainer with all optimizations
-    trainer = AdvancedNSMTrainer(model, config)
+    trainer = AdvancedDNCTrainer(model, config)
     trainer.train()
 """
 
@@ -27,19 +27,19 @@ import logging
 from typing import Dict, Any, Optional
 
 # Import all components
-from .model import NSM
+from .model import DNC
 from .statebank import AdvancedStateBank
 from .persistence import StatePersistenceManager
 from .async_manager import AsyncMemoryManager, AsyncTrainingManager
 from .performance_monitor import RTXPerformanceMonitor, ModelPerformanceAnalyzer
 from .eviction_policies import AdvancedEvictionManager, SmartMemoryManager, ContextAwareEviction
-from .unlimited_context import UnlimitedContextNSM, DynamicCompressionManager
+from .unlimited_context import UnlimitedContextDNC, DynamicCompressionManager
 from .advanced_training import AdvancedTrainingManager, CurriculumLearningManager
 
 logger = logging.getLogger(__name__)
 
-class AdvancedNSM(nn.Module):
-    """Enhanced NSM with all advanced features integrated."""
+class AdvancedDNC(nn.Module):
+    """Enhanced DNC with all advanced features integrated."""
     
     def __init__(self, config: Dict[str, Any]):
         super().__init__()
@@ -47,7 +47,7 @@ class AdvancedNSM(nn.Module):
         
         # Initialize base model
         model_config = config['model']
-        self.base_model = NSM(
+        self.base_model = DNC(
             vocab=model_config['vocab_size'],
             d_model=model_config['d_model'],
             n_layers=model_config['n_layers'],
@@ -59,7 +59,7 @@ class AdvancedNSM(nn.Module):
         
         # Enhance with unlimited context capability
         if config.get('unlimited_context', True):
-            self.model = UnlimitedContextNSM(
+            self.model = UnlimitedContextDNC(
                 self.base_model, 
                 base_context_length=model_config.get('max_seq_len', 512)
             )
@@ -91,7 +91,7 @@ class AdvancedNSM(nn.Module):
         # Training enhancements
         self.training_manager = AdvancedTrainingManager(self.model, config)
         
-        logger.info("Advanced NSM initialized with all features")
+        logger.info("Advanced DNC initialized with all features")
     
     def forward(self, input_ids, **kwargs):
         """Forward pass with enhanced features."""
@@ -142,7 +142,7 @@ class AdvancedNSM(nn.Module):
     
     def get_compression_stats(self):
         """Get compression statistics if unlimited context is enabled."""
-        if isinstance(self.model, UnlimitedContextNSM):
+        if isinstance(self.model, UnlimitedContextDNC):
             return self.model.get_compression_statistics()
         return {}
     
@@ -159,10 +159,10 @@ class AdvancedNSM(nn.Module):
         logger.info("All monitoring systems stopped")
 
 
-class AdvancedNSMTrainer:
+class AdvancedDNCTrainer:
     """Comprehensive trainer with all advanced features."""
     
-    def __init__(self, model: AdvancedNSM, config: Dict[str, Any]):
+    def __init__(self, model: AdvancedDNC, config: Dict[str, Any]):
         self.model = model
         self.config = config
         
@@ -180,7 +180,7 @@ class AdvancedNSMTrainer:
         self.metrics_history = []
         self.best_performance = 0.0
         
-        logger.info("Advanced NSM Trainer initialized")
+        logger.info("Advanced DNC Trainer initialized")
     
     async def train(self, dataset, epochs: int = None):
         """Train with all advanced features."""
@@ -292,14 +292,14 @@ class AdvancedNSMTrainer:
         }
 
 
-def create_advanced_nsm(config: Dict[str, Any]) -> AdvancedNSM:
-    """Factory function to create an Advanced NSM with all features."""
-    return AdvancedNSM(config)
+def create_advanced_dnc(config: Dict[str, Any]) -> AdvancedDNC:
+    """Factory function to create an Advanced DNC with all features."""
+    return AdvancedDNC(config)
 
 
-def create_trainer(model: AdvancedNSM, config: Dict[str, Any]) -> AdvancedNSMTrainer:
-    """Factory function to create an Advanced NSM Trainer."""
-    return AdvancedNSMTrainer(model, config)
+def create_trainer(model: AdvancedDNC, config: Dict[str, Any]) -> AdvancedDNCTrainer:
+    """Factory function to create an Advanced DNC Trainer."""
+    return AdvancedDNCTrainer(model, config)
 
 
 # Example usage

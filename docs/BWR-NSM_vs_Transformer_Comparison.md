@@ -1,8 +1,8 @@
-# BWR-NSM vs Transformer Architecture: Comprehensive Comparison
+# BWR-DNC vs Transformer Architecture: Comprehensive Comparison
 
 ## Executive Summary
 
-BWR-NSM (BlackWall Reuko Neural State Machine) represents a paradigm shift from traditional Transformer architectures, introducing hierarchical memory management, dynamic state persistence, and advanced parallelization techniques specifically optimized for long-range reasoning tasks and modern GPU architectures.
+BWR-DNC (BlackWall Reuko Dynamic Neural Core) represents a paradigm shift from traditional Transformer architectures, introducing hierarchical memory management, dynamic state persistence, and advanced parallelization techniques specifically optimized for long-range reasoning tasks and modern GPU architectures.
 
 ---
 

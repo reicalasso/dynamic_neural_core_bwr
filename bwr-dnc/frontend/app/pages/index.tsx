@@ -21,15 +21,15 @@ const Home: NextPage = () => {
   return (
     <div className="bg-gray-900 text-white min-h-screen">
       <Head>
-        <title>BWR-NSM Visualizer</title>
-        <meta name="description" content="Neural State Machine Visualizer" />
+        <title>BWR-DNC Visualizer</title>
+        <meta name="description" content="Dynamic Neural Core Visualizer" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="container mx-auto p-4">
-        <h1 className="text-4xl font-bold mb-4 text-cyan-400">BWR-NSM — Dev Visualizer</h1>
+        <h1 className="text-4xl font-bold mb-4 text-cyan-400">BWR-DNC — Dev Visualizer</h1>
         <p className="text-gray-400 mb-8">
-          Real-time dashboard for monitoring the Neural State Machine&apos;s internal state.
+          Real-time dashboard for monitoring the Dynamic Neural Core&apos;s internal state.
         </p>
         
         {/* Simple demo content */}
@@ -71,10 +71,10 @@ const Home: NextPage = () => {
           </div>
 
           <div className="bg-gray-800 p-6 rounded-lg">
-            <h3 className="text-xl font-bold text-cyan-400 mb-4">BWR-NSM Features</h3>
+            <h3 className="text-xl font-bold text-cyan-400 mb-4">BWR-DNC Features</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <div className="text-green-400">✅ Neural State Machine</div>
+                <div className="text-green-400">✅ Dynamic Neural Core</div>
                 <div className="text-green-400">✅ Hierarchical Memory</div>
                 <div className="text-green-400">✅ State Persistence</div>
                 <div className="text-green-400">✅ Async Processing</div>
