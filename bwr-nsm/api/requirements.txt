@@ -1,0 +1,12 @@
+fastapi>=0.100.0
+uvicorn[standard]
+pydantic>=2.0.0
+torch>=2.0.0
+websockets
+python-multipart
+asyncio
+aiofiles
+python-socketio
+psutil
+gpustat
+nvidia-ml-py3

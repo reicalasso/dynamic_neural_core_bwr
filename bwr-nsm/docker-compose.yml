@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend.Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app/backend
+      - ./api:/app/api
+      - ./configs:/app/configs
+    # command: uvicorn api.server:app --host 0.0.0.0 --port 8000 --reload
+    # The command is moved to the Dockerfile CMD for better practice
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/app:/app
+      # Add this to prevent node_modules from being overwritten by a local empty folder
+      - /app/node_modules 
+    depends_on:
+      - backend
+
+volumes:
+  node_modules:

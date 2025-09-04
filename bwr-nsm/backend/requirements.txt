@@ -1,0 +1,14 @@
+torch>=2.0.0
+pyyaml
+wandb
+numpy
+scipy
+tensorboard
+tqdm
+matplotlib
+seaborn
+scikit-learn
+asyncio
+psutil
+gpustat
+nvidia-ml-py3
