@@ -11,7 +11,7 @@
 - Initialize a local Git repository and prepare a .gitignore file
 - Establish remote repository connection (GitHub/GitLab)
 - Configure pre-commit hooks
-- Create the main project directory structure (bwr-nsm, api, frontend, configs, docker)
+- Create the main project directory structure (bwr-dnc, api, frontend, configs, docker)
 - Prepare Python and Node.js-based Docker images
 - Create Dockerfile files for backend and frontend
 - Create docker-compose.yml file and define services
@@ -23,14 +23,14 @@
 
 **Note:** Phase 1 must be completed before starting Phase 2. However, some tasks in Phase 4 and Phase 5 can be tested on early prototypes from Phase 2.
 
-## Phase 2: Core NSM Components Development
+## Phase 2: Core DNC Components Development
 
-### Tasks:
-- Prepare a detailed design document for NSM architecture
+### Core Model Implementation (8-12 weeks)
+- Prepare a detailed design document for DNC architecture
 - Implement RMSNorm layer
 - Develop Multi-Head Attention mechanism
-- Create NSM Block component (self-attention + GLU feedforward)
-- Implement the core NSM model class
+- Create DNC Block component (self-attention + GLU feedforward)
+- Implement the core DNC model class
 - Design StateBank data structure
 - Create memory tensors (K, V, salience, age, access_count)
 - Develop basic read operation
@@ -47,7 +47,7 @@
 - Write unit tests for core components
 - Conduct initial performance benchmarks
 
-**Note:** Components like NSM Block, StateBank, and tokenizer should be developed as independent modules with their own unit tests and benchmarks. This modular approach will facilitate easier integration with hierarchical memory (Phase 3) and async memory manager (Phase 4).
+**Note:** Components like DNC Block, StateBank, and tokenizer should be developed as independent modules with their own unit tests and benchmarks. This modular approach will facilitate easier integration with hierarchical memory (Phase 3) and async memory manager (Phase 4).
 
 ## Phase 3: Advanced Memory Management
 
@@ -309,7 +309,7 @@
 - Integrate continuous testing
 - Prepare test documentation
 
-**Note:** Include stress tests and edge-case validations for critical NSM features like memory, attention, and state evolution using simulation datasets.
+**Note:** Include stress tests and edge-case validations for critical DNC features like memory, attention, and state evolution using simulation datasets.
 
 ## Phase 10: Documentation and Deployment
 

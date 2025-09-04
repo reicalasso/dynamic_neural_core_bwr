@@ -1,7 +1,7 @@
-"""Advanced Research Metrics Collector
+"""Advanced Research Metrics Collection
 =====================================
 
-Comprehensive metrics collection for NSM vs Transformer comparison research.
+Comprehensive metrics collection for DNC vs Transformer comparison research.
 This module extends the basic research metrics with detailed training dynamics,
 gradient analysis, state evolution tracking, and attention/state contribution analysis.
 
@@ -80,7 +80,7 @@ class EfficiencyMetrics:
 
 
 class AdvancedResearchMetrics:
-    """Advanced metrics collector for NSM research"""
+    """Advanced metrics collector for DNC research"""
     
     def __init__(self, model_getter, max_history: int = 1000):
         self._get_model = model_getter

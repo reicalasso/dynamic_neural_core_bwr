@@ -329,7 +329,7 @@ def example_usage():
     }
     
     # Create model and trainer
-    model = create_advanced_nsm(config)
+    model = create_advanced_dnc(config)
     trainer = create_trainer(model, config)
     
     # Mock dataset
@@ -343,6 +343,6 @@ def example_usage():
 if __name__ == "__main__":
     # Example usage
     model, trainer = example_usage()
-    print("Advanced NSM system ready!")
+    print("Advanced DNC system ready!")
     print(f"Model parameters: {sum(p.numel() for p in model.parameters()):,}")
     print(f"Features enabled: {list(model.config.keys())}")

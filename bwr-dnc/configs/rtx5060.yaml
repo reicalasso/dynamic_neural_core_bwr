@@ -73,7 +73,7 @@ monitoring:
   monitor_throughput: true
   
   # W&B logging
-  wandb_project: "bwr-nsm-rtx5060"
+  wandb_project: "bwr-dnc-rtx5060"
   wandb_tags: ["rtx5060", "mobile", "optimized"]
 
 # Inference optimizations
@@ -83,4 +83,4 @@ inference:
   cudnn_benchmark: true
   tf32: true  # Use TensorFloat-32 for speed
 
-project_name: "bwr-nsm-rtx5060"
+project_name: "bwr-dnc-rtx5060"

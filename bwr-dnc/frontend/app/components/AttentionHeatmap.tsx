@@ -276,7 +276,7 @@ const AttentionHeatmap: React.FC<AttentionHeatmapProps> = ({
             </ul>
           </div>
           <div>
-            <h4 className="text-gray-300 font-semibold mb-2">NSM vs Transformer:</h4>
+            <h4 className="text-gray-300 font-semibold mb-2">DNC vs Transformer:</h4>
             <ul className="space-y-1 text-gray-400">
               <li>• State memory reduces attention computation</li>
               <li>• Hierarchical states capture long-range deps</li>

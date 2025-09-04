@@ -11,7 +11,7 @@ from datetime import datetime
 import json
 import numpy as np
 
-from .model import NSM
+from .model import DNC
 from .dataset import create_toy_dataset, create_curriculum_dataset
 
 # Mock tokenizer for the skeleton
@@ -44,7 +44,7 @@ class AdvancedTrainer:
         model_config = self.config['model']
         self.vocab_size = model_config['vocab_size']
         
-        self.model = NSM(
+        self.model = DNC(
             vocab=self.vocab_size,
             d_model=model_config['d_model'],
             n_layers=model_config['n_layers'],
@@ -94,7 +94,7 @@ class AdvancedTrainer:
         """Setup logging and experiment tracking."""
         if self.config.get('use_wandb', False):
             wandb.init(
-                project=self.config.get('project_name', 'bwr-nsm'),
+                project=self.config.get('project_name', 'bwr-dnc'),
                 config=self.config,
                 name=self.config.get('run_name', f"run_{datetime.now().strftime('%Y%m%d_%H%M%S')}")
             )

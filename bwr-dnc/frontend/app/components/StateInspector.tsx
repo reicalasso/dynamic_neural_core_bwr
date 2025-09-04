@@ -29,7 +29,7 @@ const StateInspector: React.FC<StateInspectorProps> = ({ className = "" }) => {
   const [evolutionData, setEvolutionData] = useState<StateEvolutionData | null>(null);
   const [selectedLevel, setSelectedLevel] = useState<number>(0);
   const [autoRefresh, setAutoRefresh] = useState(true);
-  const [inspectionText, setInspectionText] = useState("Hello world, this is a test text for NSM state inspection.");
+  const [inspectionText, setInspectionText] = useState("Hello world, this is a test text for DNC state inspection.");
 
   const fetchStateData = useCallback(async () => {
     try {
@@ -350,7 +350,7 @@ const StateInspector: React.FC<StateInspectorProps> = ({ className = "" }) => {
               onChange={(e) => setInspectionText(e.target.value)}
               rows={3}
               className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:border-cyan-400 focus:outline-none"
-              placeholder="Type your text here to see how NSM states evolve..."
+              placeholder="Type your text here to see how DNC states evolve..."
             />
           </div>
           <div className="flex gap-2">
@@ -368,7 +368,7 @@ const StateInspector: React.FC<StateInspectorProps> = ({ className = "" }) => {
             </button>
           </div>
           <div className="text-xs text-gray-400">
-            Analyze how text input affects NSM state evolution patterns and memory utilization across hierarchical levels.
+            Analyze how text input affects DNC state evolution patterns and memory utilization across hierarchical levels.
           </div>
         </div>
       </div>

@@ -31,4 +31,4 @@ performance:
   prefetch_factor: 2
   persistent_workers: true
 
-project_name: "bwr-nsm-tiny"
+project_name: "bwr-dnc-tiny"

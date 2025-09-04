@@ -78,7 +78,7 @@ const StateVisualizer: React.FC = () => {
   if (!isClient) {
     return (
       <div className="bg-gray-900 text-white min-h-screen p-4 flex items-center justify-center">
-        <div className="text-xl text-cyan-400">Loading BWR-NSM Visualizer...</div>
+        <div className="text-xl text-cyan-400">Loading BWR-DNC Visualizer...</div>
       </div>
     );
   }

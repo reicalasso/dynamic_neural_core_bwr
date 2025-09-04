@@ -34,7 +34,7 @@ interface InteractiveProbeProps {
 }
 
 const InteractiveProbe: React.FC<InteractiveProbeProps> = ({ className = "" }) => {
-  const [inputText, setInputText] = useState("The neural state machine learns to compress and retrieve information efficiently.");
+  const [inputText, setInputText] = useState("The dynamic neural core learns to compress and retrieve information efficiently.");
   const [tokens, setTokens] = useState<string[]>([]);
   const [selectedTokenIndex, setSelectedTokenIndex] = useState<number | null>(null);
   const [probeResult, setProbeResult] = useState<ProbeResult | null>(null);

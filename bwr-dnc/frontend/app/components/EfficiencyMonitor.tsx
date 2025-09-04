@@ -267,7 +267,7 @@ const EfficiencyMonitor: React.FC<EfficiencyMonitorProps> = ({ className = "" })
           <Line data={flopData} options={chartOptions} />
         </div>
         <div className="mt-2 text-sm text-gray-400">
-          Lower is better. NSM should show reduced computational cost compared to full attention.
+          Lower is better. DNC should show reduced computational cost compared to full attention.
         </div>
       </div>
 
@@ -333,10 +333,10 @@ const EfficiencyMonitor: React.FC<EfficiencyMonitorProps> = ({ className = "" })
             </div>
           </div>
           <div>
-            <h4 className="text-gray-300 font-semibold mb-2">NSM vs Transformer:</h4>
+            <h4 className="text-gray-300 font-semibold mb-2">DNC vs Transformer:</h4>
             <div className="space-y-1 text-sm text-gray-400">
               <div>• Transformer: O(n²) memory scaling</div>
-              <div>• NSM: Should show O(n) or better</div>
+              <div>• DNC: Should show O(n) or better</div>
               <div>• State compression reduces memory</div>
               <div>• Hierarchical levels enable long context</div>
             </div>

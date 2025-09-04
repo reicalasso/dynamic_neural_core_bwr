@@ -1,7 +1,7 @@
-"""Research Metrics Aggregator
-================================
+"""Research Metrics Collection
+============================
 
-Light‑weight aggregator that extracts structured telemetry from the NSM /
+Light‑weight aggregator that extracts structured telemetry from the DNC /
 AdvancedStateBank for the research visualization layer.  It is intentionally
 dependency‑free (no numpy/pandas) and returns JSON‑serialisable primitives.
 

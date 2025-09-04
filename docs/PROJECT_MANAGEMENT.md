@@ -30,9 +30,9 @@ Duration: 2 weeks
 - CI/CD pipeline setup
 - Version control system configuration
 
-### Phase 2: Core NSM Components Development
+### Phase 2: Core DNC Components Development
 Duration: 3 weeks
-- Implementation of core NSM model components
+- Implementation of core DNC model components
 - Development of the StateBank system
 - Integration of the attention mechanism
 - Creation of tokenizer and positional embedding layers
@@ -87,7 +87,7 @@ Duration: 2 weeks
 - Preparation of integration tests
 - Conducting performance benchmarks
 - Comparative testing with Transformer
-- Addition of stress tests and edge-case validations for critical NSM features like memory and attention mechanisms.
+- Addition of stress tests and edge-case validations for critical DNC features like memory and attention mechanisms.
 
 ### Phase 10: Documentation and Deployment
 Duration: 2 weeks
@@ -102,7 +102,7 @@ Duration: 2 weeks
 ### 3.1. Human Resources
 - Lead Engineer (Project Manager)
 - 2-3 AI Researchers
-- 1-2 Deep Learning Engineers or Performance Engineers for NSM and advanced memory/attention development
+- 1-2 Deep Learning Engineers or Performance Engineers for DNC and advanced memory/attention development
 - 2-3 Frontend Developers (consider adding one more for detailed dashboard and visualization components)
 - 1 DevOps Engineer
 - 1 Test Engineer
@@ -190,7 +190,7 @@ Duration: 2 weeks
 - Integration tests: Testing interactions between components
 - System tests: End-to-end scenario testing
 - Performance tests: Measuring achievement of specified targets
-- **Additional Tests:** Stress tests and edge-case validations for critical NSM features.
+- **Additional Tests:** Stress tests and edge-case validations for critical DNC features.
 
 ### 7.3. Continuous Integration
 - Automated testing and deployment with GitHub Actions

@@ -1,10 +1,10 @@
-# BWR (BlackWall Reuko) — NSM AI System v2.0
+# BWR (BlackWall Reuko) — DNC AI System v2.0
 
-An advanced Neural State Machine implementation with multi-scale memory, learned compression, and real-time visualization dashboard. Optimized for RTX 5060 Mobile and modern GPU architectures.
+An advanced Dynamic Neural Core implementation with multi-scale memory, learned compression, and real-time visualization dashboard. Optimized for RTX 5060 Mobile and modern GPU architectures.
 
 ## 🚀 Key Features
 
-### 🧠 Advanced Neural State Machine
+### 🧠 Advanced Dynamic Neural Core
 - **Multi-scale memory hierarchy** with 3 compression levels
 - **Learned compressor networks** using cross-attention
 - **Dynamic routing** between memory levels
@@ -35,9 +35,9 @@ An advanced Neural State Machine implementation with multi-scale memory, learned
 ## 📁 Project Structure
 
 ```
-BWR-NSM/
-├── backend/bwr/           # Core PyTorch NSM implementation
-│   ├── model.py          # Enhanced NSM with multi-scale memory
+BWR-DNC/
+├── backend/bwr/           # Core PyTorch DNC implementation
+│   ├── model.py          # Enhanced DNC with multi-scale memory
 │   ├── statebank.py      # Advanced state management
 │   ├── trainer.py        # Optimized training loop
 │   └── dataset.py        # Long-range reasoning datasets
@@ -71,7 +71,7 @@ This system is specifically optimized for RTX 5060 Mobile (8GB VRAM):
 ```bash
 # Clone and navigate
 git clone <repository>
-cd bwr-nsm
+cd bwr-dnc
 
 # Start all services
 docker-compose up --build
@@ -217,4 +217,4 @@ Research and educational use. See LICENSE file for details.
 
 ---
 
-**BWR-NSM v2.0** - Advanced Neural State Machine for Long-Range AI 🚀
+**BWR-DNC v2.0** - Advanced Dynamic Neural Core for Long-Range AI 🚀

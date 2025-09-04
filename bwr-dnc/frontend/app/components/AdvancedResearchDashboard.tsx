@@ -84,10 +84,10 @@ const AdvancedResearchDashboard: React.FC<AdvancedResearchDashboardProps> = ({ c
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
           <div>
             <h1 className="text-3xl font-bold text-cyan-400">
-              🧠 NSM Advanced Research Dashboard
+              🧠 DNC Advanced Research Dashboard
             </h1>
             <p className="text-gray-400 mt-2">
-              Neural State Machine vs Transformer Comparison Research Platform
+              Dynamic Neural Core vs Transformer Comparison Research Platform
             </p>
           </div>
           <div className="flex items-center gap-4">
@@ -158,7 +158,7 @@ const OverviewTab: React.FC<{ isLive: boolean; lastUpdate: string }> = ({ isLive
           <div className="flex items-center justify-between">
             <div>
               <p className="text-gray-400 text-sm">Model Type</p>
-              <p className="text-2xl font-bold text-cyan-400">NSM</p>
+              <p className="text-2xl font-bold text-cyan-400">DNC</p>
             </div>
             <div className="text-3xl">🧠</div>
           </div>
@@ -242,12 +242,12 @@ const OverviewTab: React.FC<{ isLive: boolean; lastUpdate: string }> = ({ isLive
         </div>
       </div>
 
-      {/* NSM vs Transformer Highlights */}
+      {/* DNC vs Transformer Highlights */}
       <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
-        <h2 className="text-xl font-bold text-cyan-400 mb-4">🏆 NSM vs Transformer Comparison</h2>
+        <h2 className="text-xl font-bold text-cyan-400 mb-4">🏆 DNC vs Transformer Comparison</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div>
-            <h3 className="font-semibold text-green-400 mb-3">NSM Advantages</h3>
+            <h3 className="font-semibold text-green-400 mb-3">DNC Advantages</h3>
             <ul className="space-y-2 text-sm">
               <li className="flex items-center gap-2">
                 <span className="text-green-400">✅</span>
@@ -281,7 +281,7 @@ const OverviewTab: React.FC<{ isLive: boolean; lastUpdate: string }> = ({ isLive
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-blue-400">❓</span>
-                <span className="text-gray-300">Can NSM match Transformer quality with less compute?</span>
+                <span className="text-gray-300">Can DNC match Transformer quality with less compute?</span>
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-blue-400">❓</span>
@@ -315,7 +315,7 @@ const ComparisonTab: React.FC = () => {
             </thead>
             <tbody>
               <tr className="border-b border-gray-800 bg-green-900 bg-opacity-20">
-                <td className="p-3 font-semibold text-green-400">Neural State Machine</td>
+                <td className="p-3 font-semibold text-green-400">Dynamic Neural Core</td>
                 <td className="p-3 text-green-400">O(n)</td>
                 <td className="p-3 text-green-400">Excellent</td>
                 <td className="p-3 text-yellow-400">Good</td>
@@ -365,7 +365,7 @@ const ComparisonTab: React.FC = () => {
           <div className="space-y-4">
             <div>
               <div className="flex justify-between text-sm text-gray-300 mb-1">
-                <span>NSM (Our Model)</span>
+                <span>DNC (Our Model)</span>
                 <span>85%</span>
               </div>
               <div className="w-full bg-gray-700 rounded-full h-3">
@@ -438,7 +438,7 @@ const ComparisonTab: React.FC = () => {
           <div>
             <h4 className="font-semibold text-green-400 mb-2">Key Discoveries</h4>
             <ul className="space-y-1 text-sm text-gray-300">
-              <li>• NSM achieves 95% of Transformer performance with 75% less memory</li>
+              <li>• DNC achieves 95% of Transformer performance with 75% less memory</li>
               <li>• State compression maintains quality up to 32K context length</li>
               <li>• Hierarchical states capture syntactic and semantic patterns</li>
               <li>• Training convergence is 20% faster than baseline Transformer</li>

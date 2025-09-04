@@ -2,7 +2,7 @@
 ===========================
 
 State clustering, information flow analysis, and explainability features
-for Neural State Machine research. These features help understand:
+for Dynamic Neural Core research. These features help understand:
 
 1. State Clustering: How states group and organize across hierarchical levels
 2. Information Flow: Path analysis from input to output decisions
@@ -49,7 +49,7 @@ class ExplainabilityResult:
 
 
 class AdvancedAnalysis:
-    """Advanced analysis tools for NSM research"""
+    """Advanced analysis tools for DNC research"""
     
     def __init__(self, model_getter, max_clusters: int = 10):
         self._get_model = model_getter
@@ -98,7 +98,7 @@ class AdvancedAnalysis:
         }
     
     def trace_information_flow(self, input_text: str, detailed: bool = True) -> InformationFlow:
-        """Trace how information flows through the NSM"""
+        """Trace how information flows through the DNC"""
         model = self._get_model()
         if not model:
             return self._generate_demo_flow(input_text)
