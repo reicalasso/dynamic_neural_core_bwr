@@ -20,10 +20,9 @@ Advanced Features (v2.0):
 - Advanced Training: Curriculum learning and adaptive optimization
 """
 
-__version__ = "2.0.0"
-__author__ = "BWR Team"
-__email__ = "bwr@example.com"
-
+__version__ = "0.0.0"
+__author__ = "DNC Team"
+__email__ = "yintskuyomi@proton.me"
 # Core components
 from .model import DNC
 from .statebank import StateBank, AdvancedStateBank
