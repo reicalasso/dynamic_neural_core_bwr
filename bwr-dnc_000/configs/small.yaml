@@ -1,0 +1,34 @@
+# Configuration for a small model (~50-120M params) optimized for RTX 5060
+model:
+  vocab_size: 16000
+  d_model: 768
+  n_layers: 12
+  n_heads: 12
+  slots: 4096
+  max_seq_len: 2048
+  dropout: 0.1
+
+training:
+  batch_size: 8  # Optimized for RTX 5060 8GB VRAM
+  accumulation_steps: 4  # Effective batch size of 32
+  lr: 1e-4
+  weight_decay: 0.01
+  epochs: 10
+  grad_clip: 1.0
+  eval_every: 50
+  use_wandb: true
+  curriculum_learning: true
+  
+  # RTX 5060 optimizations
+  mixed_precision: true
+  compile_model: true  # PyTorch 2.0+ compilation
+  flash_attention: true
+  gradient_checkpointing: false  # Disabled for speed on smaller model
+
+performance:
+  pin_memory: true
+  num_workers: 4
+  prefetch_factor: 2
+  persistent_workers: true
+
+project_name: "bwr-dnc-small"
