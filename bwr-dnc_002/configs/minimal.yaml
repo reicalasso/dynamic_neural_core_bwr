@@ -1,0 +1,23 @@
+model:
+  d_model: 256
+  n_layers: 4
+  n_heads: 8
+  max_seq_len: 512
+  dropout: 0.1
+
+memory:
+  memory_slots: [256, 128, 64]
+  memory_integration_layers: [2, 3]
+
+training:
+  vocab_size: 5000
+  seq_len: 128
+  learning_rate: 0.001
+  batch_size: 8
+  num_epochs: 10
+  patience: 3
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+  reload: false

@@ -47,8 +47,8 @@ class StateBank(nn.Module):
     """
     
     def __init__(
-        self, 
-        d_model: int, 
+        self,
+        d_model: int,
         slots_per_level: List[int] = [2048, 1024, 512],
         compression_ratios: List[int] = [1, 2, 4]
     ):
@@ -66,22 +66,21 @@ class StateBank(nn.Module):
         self.compression_ratios = compression_ratios
         self.n_levels = len(slots_per_level)
         
-        # Create memory levels
-        self.levels = nn.ModuleList()
-        for slots, ratio in zip(slots_per_level, compression_ratios):
-            level = {
-                'keys': nn.Parameter(torch.randn(slots, d_model)),
-                'values': nn.Parameter(torch.randn(slots, d_model)),
-                'salience': nn.Parameter(torch.zeros(slots)),
-                'age': nn.Parameter(torch.zeros(slots, dtype=torch.long)),
-                'access_count': nn.Parameter(torch.zeros(slots, dtype=torch.long))
-            }
-            self.levels.append(nn.ParameterDict(level))
+        # Create memory levels as simple parameters
+        for level_idx, (slots, ratio) in enumerate(zip(slots_per_level, compression_ratios)):
+            # Memory parameters
+            self.register_parameter(f'keys_{level_idx}', nn.Parameter(torch.randn(slots, d_model)))
+            self.register_parameter(f'values_{level_idx}', nn.Parameter(torch.randn(slots, d_model)))
+            self.register_parameter(f'salience_{level_idx}', nn.Parameter(torch.zeros(slots)))
+            
+            # Non-gradient buffers
+            self.register_buffer(f'age_{level_idx}', torch.zeros(slots, dtype=torch.long))
+            self.register_buffer(f'access_count_{level_idx}', torch.zeros(slots, dtype=torch.long))
         
         # Initialize parameters
-        for level in self.levels:
-            nn.init.xavier_uniform_(level['keys'])
-            nn.init.xavier_uniform_(level['values'])
+        for level_idx in range(self.n_levels):
+            nn.init.xavier_uniform_(getattr(self, f'keys_{level_idx}'))
+            nn.init.xavier_uniform_(getattr(self, f'values_{level_idx}'))
     
     def read(self, queries: torch.Tensor, top_k: int = 32) -> torch.Tensor:
         """
@@ -98,10 +97,10 @@ class StateBank(nn.Module):
         all_reads = []
         
         # Process each level
-        for level in self.levels:
-            keys = level['keys']  # [slots, d_model]
-            values = level['values']  # [slots, d_model]
-            salience = level['salience']  # [slots]
+        for level_idx in range(self.n_levels):
+            keys = getattr(self, f'keys_{level_idx}')  # [slots, d_model]
+            values = getattr(self, f'values_{level_idx}')  # [slots, d_model]
+            salience = getattr(self, f'salience_{level_idx}')  # [slots]
             
             # Compute attention scores: [B, T, slots]
             scores = torch.einsum('btd,sd->bts', queries, keys) / math.sqrt(D)
@@ -143,24 +142,28 @@ class StateBank(nn.Module):
             pooled_salience = torch.tensor(0.1)  # default salience
         
         # Write to each level (simplified approach)
-        for level in self.levels:
+        for level_idx in range(self.n_levels):
+            salience = getattr(self, f'salience_{level_idx}')
+            age_buffer = getattr(self, f'age_{level_idx}')
+            access_count_buffer = getattr(self, f'access_count_{level_idx}')
+            
             # Find least salient slot to evict
-            evict_idx = torch.argmin(level['salience'])
+            evict_idx = torch.argmin(salience)
             
             with torch.no_grad():
                 # Update key and value
-                level['keys'][evict_idx] = pooled_writes
-                level['values'][evict_idx] = pooled_writes
+                getattr(self, f'keys_{level_idx}')[evict_idx] = pooled_writes
+                getattr(self, f'values_{level_idx}')[evict_idx] = pooled_writes
                 
                 # Update metadata
-                level['salience'][evict_idx] = pooled_salience
-                level['age'][evict_idx] = 0
-                level['access_count'][evict_idx] += 1
+                salience[evict_idx] = pooled_salience
+                age_buffer[evict_idx] = 0
+                access_count_buffer[evict_idx] += 1
                 
                 # Age all other slots
-                mask = torch.ones_like(level['age'], dtype=torch.bool)
+                mask = torch.ones_like(age_buffer, dtype=torch.bool)
                 mask[evict_idx] = False
-                level['age'][mask] += 1
+                age_buffer[mask] += 1
     
     def get_memory_stats(self) -> Dict[str, Any]:
         """
@@ -173,15 +176,18 @@ class StateBank(nn.Module):
         total_slots = 0
         active_slots = 0
         
-        for i, level in enumerate(self.levels):
-            slots = level['keys'].shape[0]
-            active = (level['salience'] > 0.1).sum().item()
+        for level_idx in range(self.n_levels):
+            age_buffer = getattr(self, f'age_{level_idx}')
+            salience = getattr(self, f'salience_{level_idx}')
             
-            stats[f'level_{i}'] = {
+            slots = salience.shape[0]
+            active = (salience > 0.1).sum().item()
+            
+            stats[f'level_{level_idx}'] = {
                 'slots': slots,
                 'active_slots': active,
-                'avg_salience': level['salience'].mean().item(),
-                'avg_age': level['age'].float().mean().item()
+                'avg_salience': salience.mean().item(),
+                'avg_age': age_buffer.float().mean().item()
             }
             
             total_slots += slots

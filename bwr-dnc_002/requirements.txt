@@ -1,9 +1,25 @@
 # BWR-DNC 002 - Requirements
 
+# Core dependencies
 torch>=2.0.0
 numpy>=1.21.0
+
+# API dependencies
 fastapi>=0.100.0
 uvicorn>=0.23.0
 pydantic>=2.0.0
 websockets>=11.0
+
+# Testing dependencies
 pytest>=7.0.0
+
+# Configuration dependencies
+pyyaml>=6.0
+
+# Optional visualization dependencies
+matplotlib>=3.5.0
+seaborn>=0.11.0
+
+# Development dependencies
+black>=22.0.0
+flake8>=5.0.0
