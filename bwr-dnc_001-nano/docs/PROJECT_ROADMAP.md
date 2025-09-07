@@ -3,16 +3,15 @@
 ## Faz 1-3: Temel DNC ve Basit Hiyerarşik Bellek Prototipi
 
 ### Faz 1: Temel DNC Mimarisi
-- [ ] Core DNC implementasyonu
-- [ ] Temel hafıza mekanizması
-- [ ] Controller ağı (LSTM/GRU)
-- [ ] Read/write head'ler
-- [ ] Basit eğitim döngüsü
-- [ ] Unit testler
+- [x] Temel hafıza mekanizması
+- [x] Controller ağı (LSTM/GRU)
+- [x] Read/write head'ler
+- [x] Basit eğitim döngüsü
+- [ x Unit testler
 
 ### Faz 2: Hiyerarşik Bellek Geliştirme
-- [ ] Bellek hiyerarşisi yapısı
-- [ ] Multi-level memory addressing
+- [x] Bellek hiyerarşisi yapısı
+- [x] Multi-level memory addressing
 - [ ] Attention mekanizmaları
 - [ ] Bellek organizasyon şeması
 - [ ] Performans testleri
